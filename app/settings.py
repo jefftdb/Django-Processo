@@ -24,6 +24,9 @@ SECRET_KEY = 'django-insecure-h10v7#bwq6ttxb(x#*@n248^#q6g2eqf%z%f56@%eh#+jhydao
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://django-processo.onrender.com"
+]
 
 ALLOWED_HOSTS = ['52.66.239.49','*']
 
