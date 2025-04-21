@@ -32,8 +32,15 @@ CSRF_TRUSTED_ORIGINS = [
 ALLOWED_HOSTS = ['52.66.239.49','*']
 
 AUTH_USER_MODEL = 'usuario.Usuario'
+USERNAME_FIELD = 'email'
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    ]
+}
 
 # Application definition
 
@@ -45,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'usuario',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
