@@ -21,5 +21,4 @@ class UsuarioSerializer(serializers.ModelSerializer):
             foto=validated_data.get('foto', None)            
            
         )
-        print(user.CPF)
         return user

@@ -22,10 +22,7 @@ class LoginUsuario(APIView):
     def post(self, request):
         email = request.data.get("email")
         senha = request.data.get("senha")
-        
-        usuario = Usuario.objects.get(email=email)
-        print(usuario)
-        
+                
         try:
             usuario = Usuario.objects.get(email=email)
             
