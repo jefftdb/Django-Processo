@@ -15,6 +15,7 @@ def rename_user_image(instance, filename):
     return os.path.join("usuario/img", filename)
 
 class Usuario(AbstractUser):
+    CPF = models.CharField(max_length=11, blank=True, null=True)
     telefone = models.CharField(max_length=11, blank=True, null=True)
     foto = models.ImageField(upload_to=rename_user_image, blank=True, null=True)
     is_active = models.BooleanField(default=True)

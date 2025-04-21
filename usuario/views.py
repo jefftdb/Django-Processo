@@ -7,7 +7,7 @@ from .serializers import UsuarioSerializer
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import json
+
 
 class addUsuario(APIView):
     def post(self, request, format=None):
