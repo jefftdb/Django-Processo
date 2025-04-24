@@ -33,10 +33,13 @@ class LoginUsuario(APIView):
         
 
         if user is not None:
-            return Response({"message": "Login bem-sucedido!", "usuario_id": user.id})
+            return Response({
+                    "message": "Login bem-sucedido!",
+                    "usuario": UsuarioSerializer(user).data
+                })
         else:
             return Response({"error": "Credenciais inválidas."}, status=status.HTTP_401_UNAUTHORIZED)
 
 def perfil(request, id):
-    usuario = Usuario.objects.get(id=id)
-    return render(request, 'usuario/perfil.html', {'usuario': usuario})
+    user = Usuario.objects.get(id=id)
+    return render(request, 'usuario/perfil.html', {'usuario': UsuarioSerializer(user).data})

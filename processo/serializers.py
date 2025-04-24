@@ -7,7 +7,7 @@ class ImagemProtocoloSerializer(serializers.ModelSerializer):
         fields = ['imagem']
 
 class ProtocoloSerializer(serializers.ModelSerializer):
-    imagens = serializers.ListField(  # para envio no POST
+    imagens = serializers.ListField( 
         child=serializers.ImageField(),
         write_only=True,
         required=False
@@ -17,7 +17,7 @@ class ProtocoloSerializer(serializers.ModelSerializer):
     class Meta:
         model = Processo
         fields = [
-            'id', 'titulo', 'nome', 'cpf', 'email', 'telefone', 'descricao',
+            'id', 'titulo', 'nome', 'cpf', 'email', 'telefone', 'descricao', 'estado','cor',
             'latitude', 'longitude', 'id_usuario', 'imagens', 'imagens_urls'
         ]
 
