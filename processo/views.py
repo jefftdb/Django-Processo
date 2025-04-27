@@ -23,15 +23,17 @@ class Protocolos_por_usuario(APIView):
     
 class AlteraEstado(APIView):
     def post(self, request, id):
-        processo = get_object_or_404(Processo, id=id)
-        print('identificou o processo')
-        processo.avancar_estado()
-        print('avançou')
+        processo = get_object_or_404(Processo, id=id)        
+        processo.avancar_estado()        
         processo.save()
-        print('salvou')
+        
         return Response({
             "mensagem": "Estado alterado com sucesso",
             "estado_atual": processo.estado
         }, status=status.HTTP_200_OK)
     
-    
+class ExibeProtocolo(APIView):
+    def post(self, request, id):
+        protocolo = get_object_or_404(Processo, id=id)
+        serializer = ProtocoloSerializer(protocolo)
+        return Response(serializer.data, status=status.HTTP_200_OK)    
