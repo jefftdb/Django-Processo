@@ -16,7 +16,7 @@ def rename_protoloco_image(instance, filename):
 
 class Processo(models.Model):    
     id=models.AutoField(primary_key=True)    
-    titulo = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=25)
     nome = models.CharField(max_length=50)
     descricao = models.CharField(max_length=255, blank=True, null=True)
     cpf = models.CharField(max_length=11, blank=True, null=True)
