@@ -22,7 +22,7 @@ class Processo(models.Model):
     cpf = models.CharField(max_length=11, blank=True, null=True)
     email = models.EmailField(max_length=50)
     telefone = models.CharField(max_length=11, blank=True, null=True)
-    estado = models.CharField(max_length=11, blank=True, null=True, default='Analizando')
+    estado = models.CharField(max_length=11, blank=True, null=True, default='Analisando')
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
     cor = models.CharField(blank=True, null= True,default='rgb(248, 51, 84)')
