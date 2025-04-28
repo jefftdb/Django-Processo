@@ -4,6 +4,9 @@ from rest_framework import status
 from .serializers import ProtocoloSerializer
 from .models import Processo
 from django.shortcuts import get_object_or_404
+from django.http import FileResponse
+import os
+from django.conf import settings
 
 class RegistrarProtocolo(APIView):
     def post(self, request):
@@ -36,4 +39,14 @@ class ExibeProtocolo(APIView):
     def post(self, request, id):
         protocolo = get_object_or_404(Processo, id=id)
         serializer = ProtocoloSerializer(protocolo)
-        return Response(serializer.data, status=status.HTTP_200_OK)    
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class DownloadBD(APIView):
+    def post(self, request):
+        caminho_banco = os.path.join(settings.BASE_DIR, 'db.sqlite3')
+
+        if os.path.exists(caminho_banco):
+            response = FileResponse(open(caminho_banco, 'rb'), as_attachment=True, filename='db.sqlite3')
+            return response
+        else:
+            return Response({'error': 'Arquivo não encontrado'}, status=404) 
