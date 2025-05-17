@@ -41,8 +41,14 @@ class ExibeProtocolo(APIView):
         serializer = ProtocoloSerializer(protocolo)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
+class Protocolos(APIView):
+    def get(self,request):
+        protocolo = Processo.objects.all()
+        serializer = ProtocoloSerializer(protocolo, many = True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
 class DownloadBD(APIView):
-    def post(self, request):
+    def get(self, request):
         caminho_banco = os.path.join(settings.BASE_DIR, 'db.sqlite3')
 
         if os.path.exists(caminho_banco):
